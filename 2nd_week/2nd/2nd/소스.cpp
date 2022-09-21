@@ -2,13 +2,11 @@
 
 int main(void)
 {
-	int Korean=70, English=80, Math=90;
-	int tot;
+	char ch;
 
-	tot = Korean + English + Math;
-	printf("Korean=%d, English=%d, Math=%d\n"), Korean, English, Math;
-	printf("%d\n"), tot;
+	printf("input the text : ");
+	scanf_s("%c", &ch);
+	printf("%c 's ascki code is	%d", ch, ch);
 
 	return 0;
-
 }
