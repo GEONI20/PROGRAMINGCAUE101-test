@@ -32,7 +32,7 @@ int main(void)
 		{
 			clothesSize = 'S';
 		}
-		else if ((chestSize <= 90) && (chestSize < 100))
+		else if ((chestSize >= 90) && (chestSize < 100))
 		{
 			clothesSize = 'M';
 		}
