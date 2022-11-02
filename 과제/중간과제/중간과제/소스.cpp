@@ -118,7 +118,7 @@ int Two_by_Two_Det_function_β(int a, int b, int c, int d, int e, int f)
 	denominator = a * e - b * d;
 	numerator = a * f - c * d;
 
-	res = (numerator) / (denominator);
+	res = (double)numerator / (double)denominator;
 
 	return res;
 }
@@ -133,7 +133,7 @@ int Three_by_Three_Det_Function_α(int a, int b, int c, int d, int e, int f, int
 	denominator = a * (f*k-g*j)-b*(e*k - g*j)+ c*(f*j - e*j);
 	numerator = d*(f*k-g*j)- b*(h*k-g*l)+c*(h*j-f*l);
 
-	res = (numerator) / (denominator);
+	res = (double)numerator / (double)denominator;
 
 	return res;
 
@@ -151,7 +151,7 @@ int Three_by_Three_Det_Function_β(int a, int b, int c, int d, int e, int f, int
 	denominator = a * (f * k - g * j) - b * (e * k - g * j) + c * (f * j - e * j);
 	numerator = a * (h * k - g * l) - d * (e * k - g * i) + c * (e * l - h * i);
 
-	res = (numerator) / (denominator);
+	res = (double)numerator / (double)denominator;
 
 	return res;
 }
@@ -166,7 +166,7 @@ int Three_by_Three_Det_Function_γ(int a, int b, int c, int d, int e, int f, int
 	denominator = a * (f * k - g * j) - b * (e * k - g * j) + c * (f * j - e * j);
 	numerator = a*(f*l-h*j)-b*(e*l-h*j)+d*(e*j-f*i);
 
-	res = (numerator) / (denominator);
+	res = (double)numerator / (double)denominator;
 
 	return res;
 }
@@ -181,7 +181,7 @@ int Four_by_Four_Det_Function_α(int a, int b, int c, int d, int e, int f, int g
 	denominator = a * (g * (m * s - r * n) - h * (l * s - n * g) + i * (l * n - n * g)) - b * (f * (m * s - l * n) - h * (k * s - n * p) + i * (k * r - n * p)) + c * (f * (l * s - n * q) - g * (k * s - n * p) + i * (k * q - l * p)) - d * (f * (l * r - m * q) - g * (k * r - m * p) + h * (k * q - l * p));
 	numerator = e * (g * (m * s - n * r) - h * (l * s - n * q) + i * (l * r - m * q)) - b * (j * (m * s - r * n) - h * (o * s - n * t) + i * (o * r - n * t)) + c * (j * (l * s - n * q) - g * (o * s - n * t) + i * (o * q - l * t)) - d * (j * (l * r - m * q) - g * (o * r - m * t) + h * (o * q - l * t));
 
-	res = (numerator) / (denominator);
+	res = (double)numerator / (double)denominator;
 
 	return res;
 }
@@ -196,7 +196,7 @@ int Four_by_Four_Det_Function_β(int a, int b, int c, int d, int e, int f, int g
 	denominator = a * (g * (m * s - r * n) - h * (l * s - n * g) + i * (l * n - n * g)) - b * (f * (m * s - l * n) - h * (k * s - n * p) + i * (k * r - n * p)) + c * (f * (l * s - n * q) - g * (k * s - n * p) + i * (k * q - l * p)) - d * (f * (l * r - m * q) - g * (k * r - m * p) + h * (k * q - l * p));
 	numerator = a * (j * (m * s - r * n) - j * (o * s - n * t) + i * (l * r - m * q)) - e * (f * (m * s - n * r) - h * (k * s - n * p) + i * (k * r - m * p)) + c * (f * (o * s - n * t) - j * (k * s - n * p) + i * (k * t - o * p)) - d * (f * (o * r - n * t) - j * (k * r - m * p) + h * (k * t - o * p));
 
-	res = (numerator) / (denominator);
+	res = (double)numerator / (double)denominator;
 
 	return res;
 }
@@ -211,7 +211,7 @@ int Four_by_Four_Det_Function_γ(int a, int b, int c, int d, int e, int f, int g
 	denominator = a * (g * (m * s - r * n) - h * (l * s - n * g) + i * (l * n - n * g)) - b * (f * (m * s - l * n) - h * (k * s - n * p) + i * (k * r - n * p)) + c * (f * (l * s - n * q) - g * (k * s - n * p) + i * (k * q - l * p)) - d * (f * (l * r - m * q) - g * (k * r - m * p) + h * (k * q - l * p));
 	numerator = a * (g * (o * s - n * t) - j * (l * s - n * q) + i * (l * t - o * q)) - b * (f * (o * s - n * t) - j * (k * s - n * p) + i * (k * t - o * p)) + e * (f * (l * s - n * q) - g * (k * s - n * p) + i * (k * q - l * p)) - d * (f * (l * t - o * q) - g * (k * t - o * p) + j * (k * q - l * o));
 
-	res = (numerator) / (denominator);
+	res = (double)numerator / (double)denominator;
 
 	return res;
 }
@@ -226,7 +226,7 @@ int Four_by_Four_Det_Function_δ(int a, int b, int c, int d, int e, int f, int g
 	denominator = a * (g * (m * s - r * n) - h * (l * s - n * g) + i * (l * n - n * g)) - b * (f * (m * s - l * n) - h * (k * s - n * p) + i * (k * r - n * p)) + c * (f * (l * s - n * q) - g * (k * s - n * p) + i * (k * q - l * p)) - d * (f * (l * r - m * q) - g * (k * r - m * p) + h * (k * q - l * p));
 	numerator = a * (g * (m * t - o * r) - h * (l * t - o * q) + j * (l * r - m * q)) - b * (f * (m * t - o * r) - h * (k * t - o * p) + j * (k * r - m * p)) + c * (f * (l * t - o * q) - g * (k * t - o * p) + j * (k * q - l * p)) - e * (f * (l * r - m * q) - g * (k * r - m * p) + h * (k * q - l * p));
 
-	res = (numerator) / (denominator);
+	res = (double)numerator / (double)denominator;
 
 	return res;
 }

@@ -1,35 +1,21 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-
+int Determinant(int ary [3][4]);
 
 int main()
 {
-	int i, j, k;
+	int DetA[4] = { 1,2,3,4 };
 
-	int A[4][4] = { {1,1,1,1},{1,1,1,1},{1,1,1,1},{1,1,1,1} };
-	int B[4][4] = { {1,1,1,1},{1,1,1,1},{1,1,1,1},{1,1,1,1} };
-	int C[4][4] = {0};
+	int(*ary)[4];
 
-	for (i = 0; i < 4; i++)
-	{
-		for (j = 0; j < 4; j++)
-		{
-			for (k = 0; k < 4; k++)
-			{
-				C[i][j] += A[i][k] * B[k][j];
-			}
-		}
-	}
+	ary = &DetA;
 
-	for (i = 0; i < 4; i++)
-	{
-		for (j = 0; j < 4; j++)
-		{
-			printf("c[%d][%d] = %d\t", i, j, C[i][j]);
-		}
-		printf("\n");
-	}
+	printf("%dX+%dY+%dZ=%d", Determinant(ary));
 
-	return 0;
+
+}
+
+int Det(int ary[4])
+{
+	return 2, 3, 4, 5;
 }
