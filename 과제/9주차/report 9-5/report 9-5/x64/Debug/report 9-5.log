@@ -1,0 +1,4 @@
+﻿  소스.cpp
+C:\Users\김거니\Documents\GitHub\PROGRAMINGCAUE101-test\과제\9주차\report 9-5\report 9-5\소스.cpp(28,12): warning C4101: 'pa' :참조되지 않은 지역 변수입니다.
+C:\Users\김거니\Documents\GitHub\PROGRAMINGCAUE101-test\과제\9주차\report 9-5\report 9-5\소스.cpp(28,16): warning C4101: 'pb' :참조되지 않은 지역 변수입니다.
+  report 9-5.vcxproj -> C:\Users\김거니\Documents\GitHub\PROGRAMINGCAUE101-test\과제\9주차\report 9-5\x64\Debug\report 9-5.exe
