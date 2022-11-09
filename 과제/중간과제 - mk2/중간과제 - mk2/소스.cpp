@@ -4,8 +4,9 @@
 #define Second_Simultaneous_Equations 2
 #define Thrid_Simultaneous_Equations 3
 #define Fourth_Simultaneous_Equations 4
+#define ERR_PRN printf("There is no solution to that equation. please restart the program...\n")
 
-int Determinant_Function(int x, int ary[4][5]);
+int Determinant_Function(int x, int ary[4][5]);//Cramer's rule 계산 함수
 
 int main()
 {
@@ -66,22 +67,22 @@ int main()
 	case Fourth_Simultaneous_Equations://미지수가 4개인 연립방정식을 행렬에 저장
 
 		printf("Enter each coefficient of aw+bx+cy+dz=e : ");
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < 5; i++)
 		{
 			scanf_s("%d", &Det[0][i]);
 		}
 		printf("Enter each coefficient of fw+gx+hy+iz=j : ");
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < 5; i++)
 		{
 			scanf_s("%d", &Det[1][i]);
 		}
 		printf("Enter each coefficient of kw+lx+my+nz=o : ");
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < 5; i++)
 		{
 			scanf_s("%d", &Det[2][i]);
 		}
 		printf("Enter each coefficient of pw+qx+ry+sz=t : ");
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < 5; i++)
 		{
 			scanf_s("%d", &Det[3][i]);
 		}
@@ -117,78 +118,115 @@ int Determinant_Function(int x, int ary[4][5])
 
 		res_z, res_w = 0, 0;
 		denominator = (ary[0][0] * ary[1][1]) - (ary[0][1] * ary[1][0]);
-		numerator = (ary[0][2] * ary[1][1]) - (ary[0][1] * ary[1][2]);
-
-		res_x  = (double)numerator / (double)denominator;
 		
-		numerator = (ary[0][0] * ary[1][2]) - (ary[0][2] * ary[1][0]);
+		if (denominator != 0)
+		{
+		
+			numerator = (ary[0][2] * ary[1][1]) - (ary[0][1] * ary[1][2]);
 
-		res_y = (double)numerator / (double)denominator;
+			res_x = (double)numerator / (double)denominator;
 
-		break;
+			numerator = (ary[0][0] * ary[1][2]) - (ary[0][2] * ary[1][0]);
+
+			res_y = (double)numerator / (double)denominator;
+
+			break;
+		}
+		else
+		{
+			ERR_PRN;
+
+			return 0;
+		}
+
+		
 
 	case Thrid_Simultaneous_Equations://미지수가 3개인 연립방정식
 
 		res_w = 0;
 
 		denominator = ary[0][0] * ((ary[1][1] * ary[2][2]) - (ary[1][2] * ary[2][1]))
-			- ary[0][1] * ((ary[1][0] * ary[2][2]) - (ary[1][2] * ary[2][0]))
-			+ ary[0][2] * ((ary[1][0] * ary[2][1]) - (ary[1][1] - ary[2][0]));
-		numerator = ary[0][3] * ((ary[1][1] * ary[2][2]) - ary[1][2] - ary[2][1])
-			- ary[0][1] * ((ary[1][3] * ary[2][2]) - (ary[1][2] * ary[2][0]))
-			+ ary[0][2] * ((ary[1][3] * ary[2][1]) - (ary[1][1] - ary[2][3]));
+					- ary[0][1] * ((ary[1][0] * ary[2][2]) - (ary[1][2] * ary[2][0]))
+					+ ary[0][2] * ((ary[1][0] * ary[2][1]) - (ary[1][1] - ary[2][0]));
+		
+		if (denominator != 0)
+		{
+			numerator = ary[0][3] * ((ary[1][1] * ary[2][2]) - ary[1][2] - ary[2][1])
+						- ary[0][1] * ((ary[1][3] * ary[2][2]) - (ary[1][2] * ary[2][0]))
+						+ ary[0][2] * ((ary[1][3] * ary[2][1]) - (ary[1][1] - ary[2][3]));
 
-		res_x = (double)numerator / (double)denominator;
+			res_x = (double)numerator / (double)denominator;
 
-		numerator = ary[0][0] * ((ary[1][3] * ary[2][2]) - ary[1][2] - ary[2][3])
-			- ary[0][3] * ((ary[1][0] * ary[2][2]) - (ary[1][2] * ary[2][0]))
-			+ ary[0][2] * ((ary[1][3] * ary[2][3]) - (ary[1][1] - ary[2][0]));
+			numerator = ary[0][0] * ((ary[1][3] * ary[2][2]) - ary[1][2] - ary[2][3])
+						- ary[0][3] * ((ary[1][0] * ary[2][2]) - (ary[1][2] * ary[2][0]))
+						+ ary[0][2] * ((ary[1][3] * ary[2][3]) - (ary[1][1] - ary[2][0]));
 
-		res_y = (double)numerator / (double)denominator;
+			res_y = (double)numerator / (double)denominator;
 
-		numerator = ary[0][0] * ((ary[1][1] * ary[2][3]) - ary[1][3] - ary[2][1])
-			- ary[0][1] * ((ary[1][0] * ary[2][3]) - (ary[1][3] * ary[2][0]))
-			+ ary[0][3] * ((ary[1][0] * ary[2][1]) - (ary[1][1] - ary[2][0]));
+			numerator = ary[0][0] * ((ary[1][1] * ary[2][3]) - ary[1][3] - ary[2][1])
+						- ary[0][1] * ((ary[1][0] * ary[2][3]) - (ary[1][3] * ary[2][0]))
+						+ ary[0][3] * ((ary[1][0] * ary[2][1]) - (ary[1][1] - ary[2][0]));
 
-		res_z = (double)numerator / (double)denominator;
+			res_z = (double)numerator / (double)denominator;
 
-		break;
+			break;
+
+		}
+
+		else
+		{
+			ERR_PRN;
+
+			return 0;
+		}
 
 	case Fourth_Simultaneous_Equations://미지수가 4개인 연립방정식
 
-		denominator = ary[0][0] * (ary[1][1] * (ary[2][2] * ary[3][3] - ary[2][3] * ary[3][2]) - ary[1][2] * (ary[2][1] * ary[3][3] - ary[2][3] * ary[3][1]) + ary[1][3] * (ary[2][1] * ary[3][2]) - (ary[2][2] * ary[3][1]))
-			- ary[0][1] * (ary[1][0] * (ary[2][2] * ary[3][3] - ary[2][3] * ary[3][2]) - ary[1][2] * (ary[2][0] * ary[3][3] - ary[2][3] * ary[3][0]) + ary[1][3] * (ary[2][0] * ary[3][2] - ary[2][2] * ary[3][0]))
-			+ ary[0][2] * (ary[1][0] * (ary[2][1] * ary[3][3] - ary[2][3] * ary[3][1]) - ary[1][1] * (ary[2][0] * ary[3][3] - ary[2][3] * ary[3][0]) + ary[1][3] * (ary[2][0] * ary[3][1] - ary[2][1] * ary[3][0]))
-			- ary[0][3] * (ary[1][0] * (ary[2][1] * ary[3][2] - ary[2][2] * ary[3][1]) - ary[1][1] * (ary[2][0] * ary[3][2] - ary[2][2] * ary[3][0]) + ary[1][2] * (ary[2][0] * ary[3][1] - ary[2][1] * ary[3][0]));
-		numerator = ary[0][4] * (ary[1][1] * (ary[2][2] * ary[3][3] - ary[2][3] * ary[3][2]) - ary[1][2] * (ary[2][1] * ary[3][3] - ary[2][3] * ary[3][1]) + ary[1][3] * (ary[2][1] * ary[3][2]) - (ary[2][2] * ary[3][1]))
-			- ary[0][1] * (ary[1][4] * (ary[2][2] * ary[3][3] - ary[2][3] * ary[3][2]) - ary[1][2] * (ary[2][4] * ary[3][3] - ary[2][3] * ary[3][4]) + ary[1][3] * (ary[2][4] * ary[3][2] - ary[2][2] * ary[3][4]))
-			+ ary[0][2] * (ary[1][4] * (ary[2][1] * ary[3][3] - ary[2][3] * ary[3][1]) - ary[1][1] * (ary[2][4] * ary[3][3] - ary[2][3] * ary[3][4]) + ary[1][3] * (ary[2][4] * ary[3][1] - ary[2][1] * ary[3][4]))
-			- ary[0][3] * (ary[1][4] * (ary[2][1] * ary[3][2] - ary[2][2] * ary[3][1]) - ary[1][1] * (ary[2][4] * ary[3][2] - ary[2][2] * ary[3][4]) + ary[1][2] * (ary[2][4] * ary[3][1] - ary[2][1] * ary[3][4]));
+		denominator = ary[0][0] * (ary[1][1] * (ary[2][2] * ary[3][3] - ary[2][3] * ary[3][2]) - ary[1][2] * (ary[2][1] * ary[3][3] - ary[2][3] * ary[3][1]) + ary[1][3] * (ary[2][1] * ary[3][2] - ary[2][2] * ary[3][1]))
+					- ary[0][1] * (ary[1][0] * (ary[2][2] * ary[3][3] - ary[2][3] * ary[3][2]) - ary[1][2] * (ary[2][0] * ary[3][3] - ary[2][3] * ary[3][0]) + ary[1][3] * (ary[2][0] * ary[3][2] - ary[2][2] * ary[3][0]))
+					+ ary[0][2] * (ary[1][0] * (ary[2][1] * ary[3][3] - ary[2][3] * ary[3][1]) - ary[1][1] * (ary[2][0] * ary[3][3] - ary[2][3] * ary[3][0]) + ary[1][3] * (ary[2][0] * ary[3][1] - ary[2][1] * ary[3][0]))
+					- ary[0][3] * (ary[1][0] * (ary[2][1] * ary[3][2] - ary[2][2] * ary[3][1]) - ary[1][1] * (ary[2][0] * ary[3][2] - ary[2][2] * ary[3][0]) + ary[1][2] * (ary[2][0] * ary[3][1] - ary[2][1] * ary[3][0]));
+		
+		if (denominator != 0)
+		{
+			numerator = ary[0][4] * (ary[1][1] * (ary[2][2] * ary[3][3] - ary[2][3] * ary[3][2]) - ary[1][2] * (ary[2][1] * ary[3][3] - ary[2][3] * ary[3][1]) + ary[1][3] * (ary[2][1] * ary[3][2] - ary[2][2] * ary[3][1]))
+						- ary[0][1] * (ary[1][4] * (ary[2][2] * ary[3][3] - ary[2][3] * ary[3][2]) - ary[1][2] * (ary[2][4] * ary[3][3] - ary[2][3] * ary[3][4]) + ary[1][3] * (ary[2][4] * ary[3][2] - ary[2][2] * ary[3][4]))
+						+ ary[0][2] * (ary[1][4] * (ary[2][1] * ary[3][3] - ary[2][3] * ary[3][1]) - ary[1][1] * (ary[2][4] * ary[3][3] - ary[2][3] * ary[3][4]) + ary[1][3] * (ary[2][4] * ary[3][1] - ary[2][1] * ary[3][4]))
+						- ary[0][3] * (ary[1][4] * (ary[2][1] * ary[3][2] - ary[2][2] * ary[3][1]) - ary[1][1] * (ary[2][4] * ary[3][2] - ary[2][2] * ary[3][4]) + ary[1][2] * (ary[2][4] * ary[3][1] - ary[2][1] * ary[3][4]));
 
-		res_w = (double)numerator / (double)denominator;
+			res_w = (double)numerator / (double)denominator;//W의 계수를 구하는 식
 
-		numerator = ary[0][0] * (ary[1][4] * (ary[2][2] * ary[3][3] - ary[2][3] * ary[3][2]) - ary[1][2] * (ary[2][4] * ary[3][3] - ary[2][3] * ary[3][4]) + ary[1][3] * (ary[2][4] * ary[3][2]) - (ary[2][2] * ary[3][4]))
-			- ary[0][4] * (ary[1][0] * (ary[2][2] * ary[3][3] - ary[2][3] * ary[3][2]) - ary[1][2] * (ary[2][0] * ary[3][3] - ary[2][3] * ary[3][0]) + ary[1][3] * (ary[2][0] * ary[3][2] - ary[2][2] * ary[3][0]))
-			+ ary[0][2] * (ary[1][0] * (ary[2][4] * ary[3][3] - ary[2][3] * ary[3][4]) - ary[1][4] * (ary[2][0] * ary[3][3] - ary[2][3] * ary[3][0]) + ary[1][3] * (ary[2][0] * ary[3][4] - ary[2][4] * ary[3][0]))
-			- ary[0][3] * (ary[1][0] * (ary[2][4] * ary[3][2] - ary[2][2] * ary[3][4]) - ary[1][4] * (ary[2][0] * ary[3][2] - ary[2][2] * ary[3][0]) + ary[1][2] * (ary[2][0] * ary[3][4] - ary[2][4] * ary[3][0]));
+			numerator = ary[0][0] * (ary[1][4] * (ary[2][2] * ary[3][3] - ary[2][3] * ary[3][2]) - ary[1][2] * (ary[2][4] * ary[3][3] - ary[2][3] * ary[3][4]) + ary[1][3] * (ary[2][4] * ary[3][2] - ary[2][2] * ary[3][4]))
+						- ary[0][4] * (ary[1][0] * (ary[2][2] * ary[3][3] - ary[2][3] * ary[3][2]) - ary[1][2] * (ary[2][0] * ary[3][3] - ary[2][3] * ary[3][0]) + ary[1][3] * (ary[2][0] * ary[3][2] - ary[2][2] * ary[3][0]))
+						+ ary[0][2] * (ary[1][0] * (ary[2][4] * ary[3][3] - ary[2][3] * ary[3][4]) - ary[1][4] * (ary[2][0] * ary[3][3] - ary[2][3] * ary[3][0]) + ary[1][3] * (ary[2][0] * ary[3][4] - ary[2][4] * ary[3][0]))
+						- ary[0][3] * (ary[1][0] * (ary[2][4] * ary[3][2] - ary[2][2] * ary[3][4]) - ary[1][4] * (ary[2][0] * ary[3][2] - ary[2][2] * ary[3][0]) + ary[1][2] * (ary[2][0] * ary[3][4] - ary[2][4] * ary[3][0]));
 
-		res_x = (double)numerator / (double)denominator;
+			res_x = (double)numerator / (double)denominator;//X의 계수를 구하는 식
 
-		numerator = ary[0][0] * (ary[1][1] * (ary[2][2] * ary[3][3] - ary[2][3] * ary[3][2]) - ary[1][2] * (ary[2][1] * ary[3][3] - ary[2][3] * ary[3][1]) + ary[1][3] * (ary[2][1] * ary[3][2]) - (ary[2][2] * ary[3][1]))
-			- ary[0][1] * (ary[1][0] * (ary[2][2] * ary[3][3] - ary[2][3] * ary[3][2]) - ary[1][2] * (ary[2][0] * ary[3][3] - ary[2][3] * ary[3][0]) + ary[1][3] * (ary[2][0] * ary[3][2] - ary[2][2] * ary[3][0]))
-			+ ary[0][2] * (ary[1][0] * (ary[2][1] * ary[3][3] - ary[2][3] * ary[3][1]) - ary[1][1] * (ary[2][0] * ary[3][3] - ary[2][3] * ary[3][0]) + ary[1][3] * (ary[2][0] * ary[3][1] - ary[2][1] * ary[3][0]))
-			- ary[0][3] * (ary[1][0] * (ary[2][1] * ary[3][2] - ary[2][2] * ary[3][1]) - ary[1][1] * (ary[2][0] * ary[3][2] - ary[2][2] * ary[3][0]) + ary[1][2] * (ary[2][0] * ary[3][1] - ary[2][1] * ary[3][0]));
+			numerator = ary[0][0] * (ary[1][1] * (ary[2][4] * ary[3][3] - ary[2][3] * ary[3][4]) - ary[1][4] * (ary[2][1] * ary[3][3] - ary[2][3] * ary[3][1]) + ary[1][3] * (ary[2][1] * ary[3][4] - ary[2][4] * ary[3][1]))
+						- ary[0][1] * (ary[1][0] * (ary[2][4] * ary[3][3] - ary[2][3] * ary[3][4]) - ary[1][4] * (ary[2][0] * ary[3][3] - ary[2][3] * ary[3][0]) + ary[1][3] * (ary[2][0] * ary[3][4] - ary[2][4] * ary[3][0]))
+						+ ary[0][4] * (ary[1][0] * (ary[2][1] * ary[3][3] - ary[2][3] * ary[3][1]) - ary[1][1] * (ary[2][0] * ary[3][3] - ary[2][3] * ary[3][0]) + ary[1][3] * (ary[2][0] * ary[3][1] - ary[2][1] * ary[3][0]))
+						- ary[0][3] * (ary[1][0] * (ary[2][1] * ary[3][4] - ary[2][4] * ary[3][1]) - ary[1][1] * (ary[2][0] * ary[3][4] - ary[2][4] * ary[3][0]) + ary[1][4] * (ary[2][0] * ary[3][1] - ary[2][1] * ary[3][0]));
 
-		res_y = (double)numerator / (double)denominator;
+			res_y = (double)numerator / (double)denominator;//Y의 계수를 구하는 식
 
-		numerator = ary[0][0] * (ary[1][1] * (ary[2][4] * ary[3][3] - ary[2][3] * ary[3][4]) - ary[1][4] * (ary[2][1] * ary[3][3] - ary[2][3] * ary[3][1]) + ary[1][3] * (ary[2][1] * ary[3][4]) - (ary[2][4] * ary[3][1]))
-			- ary[0][1] * (ary[1][0] * (ary[2][4] * ary[3][3] - ary[2][3] * ary[3][4]) - ary[1][4] * (ary[2][0] * ary[3][3] - ary[2][3] * ary[3][0]) + ary[1][3] * (ary[2][0] * ary[3][4] - ary[2][4] * ary[3][0]))
-			+ ary[0][4] * (ary[1][0] * (ary[2][1] * ary[3][3] - ary[2][3] * ary[3][1]) - ary[1][1] * (ary[2][0] * ary[3][3] - ary[2][3] * ary[3][0]) + ary[1][3] * (ary[2][0] * ary[3][1] - ary[2][1] * ary[3][0]))
-			- ary[0][3] * (ary[1][0] * (ary[2][1] * ary[3][4] - ary[2][4] * ary[3][1]) - ary[1][1] * (ary[2][0] * ary[3][4] - ary[2][4] * ary[3][0]) + ary[1][4] * (ary[2][0] * ary[3][1] - ary[2][1] * ary[3][0]));
+			numerator = ary[0][0] * (ary[1][1] * (ary[2][2] * ary[3][4] - ary[2][4] * ary[3][2]) - ary[1][2] * (ary[2][1] * ary[3][4] - ary[2][4] * ary[3][1]) + ary[1][4] * (ary[2][1] * ary[3][2] - ary[2][2] * ary[3][1]))
+						- ary[0][1] * (ary[1][0] * (ary[2][2] * ary[3][4] - ary[2][4] * ary[3][2]) - ary[1][2] * (ary[2][0] * ary[3][4] - ary[2][4] * ary[3][0]) + ary[1][4] * (ary[2][0] * ary[3][2] - ary[2][2] * ary[3][0]))
+						+ ary[0][2] * (ary[1][0] * (ary[2][1] * ary[3][4] - ary[2][4] * ary[3][1]) - ary[1][1] * (ary[2][0] * ary[3][4] - ary[2][4] * ary[3][0]) + ary[1][4] * (ary[2][0] * ary[3][1] - ary[2][1] * ary[3][0]))
+						- ary[0][4] * (ary[1][0] * (ary[2][1] * ary[3][2] - ary[2][2] * ary[3][1]) - ary[1][1] * (ary[2][0] * ary[3][2] - ary[2][2] * ary[3][0]) + ary[1][2] * (ary[2][0] * ary[3][1] - ary[2][1] * ary[3][0]));
 
-		res_z = (double)numerator / (double)denominator;
+			res_z = (double)numerator / (double)denominator;//Z의 계수를 구하는 식
 
-		break;
+			break;
+
+		}
+
+		else
+		{
+			ERR_PRN;
+
+			return 0;
+		}
 
 	default:
 		break;
