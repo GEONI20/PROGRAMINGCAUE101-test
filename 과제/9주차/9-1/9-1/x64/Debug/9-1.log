@@ -1,4 +1,4 @@
 ﻿  소스.cpp
-C:\Users\김거니\Documents\GitHub\PROGRAMINGCAUE101-test\과제\9주차\9-1\9-1\소스.cpp(10,9): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 2의 형식이 'size_t'입니다.
-C:\Users\김거니\Documents\GitHub\PROGRAMINGCAUE101-test\과제\9주차\9-1\9-1\소스.cpp(10,9): message : 서식 문자열에서 '%zd'을(를) 사용하는 것이 좋습니다.
+C:\Users\김거니\Documents\GitHub\PROGRAMINGCAUE101-test\과제\9주차\9-1\9-1\소스.cpp(12,9): warning C4477: 'printf' : 서식 문자열 '%d'에 'int' 형식의 인수가 필요하지만 variadic 인수 2의 형식이 'size_t'입니다.
+C:\Users\김거니\Documents\GitHub\PROGRAMINGCAUE101-test\과제\9주차\9-1\9-1\소스.cpp(12,9): message : 서식 문자열에서 '%zd'을(를) 사용하는 것이 좋습니다.
   9-1.vcxproj -> C:\Users\김거니\Documents\GitHub\PROGRAMINGCAUE101-test\과제\9주차\9-1\x64\Debug\9-1.exe
