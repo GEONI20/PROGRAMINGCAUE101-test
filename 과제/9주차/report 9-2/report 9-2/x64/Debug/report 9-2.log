@@ -1,3 +1,3 @@
 ﻿  소스.cpp
-C:\Users\김거니\Documents\GitHub\PROGRAMINGCAUE101-test\과제\9주차\report 9-2\report 9-2\소스.cpp(20,19): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\김거니\Documents\GitHub\PROGRAMINGCAUE101-test\과제\9주차\report 9-2\report 9-2\소스.cpp(23,20): warning C4267: '=': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
   report 9-2.vcxproj -> C:\Users\김거니\Documents\GitHub\PROGRAMINGCAUE101-test\과제\9주차\report 9-2\x64\Debug\report 9-2.exe
