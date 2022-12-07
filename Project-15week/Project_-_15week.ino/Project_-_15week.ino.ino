@@ -19,7 +19,8 @@ int nPotenPin = A0;
 int nServoPin = 6;
 int nDelay = 100;
 
-int nLEDPin[4] = {nRedPin, nYellowPin, nGreenPin, nBluePin};
+int nLEDPin[4] = {nRedPin, nYellowPin, nGreenPin, nBluePin};//LED를 배열로 치환
+int *pLED = nLEDPin;//각 배열을 가리키기 위한 포인터
 
 Servo myServo;
 
@@ -60,17 +61,17 @@ void loop()
      }
     }
     
-    GenLEDDigitalOutput(nLEDPin[RedPin], HIGH, nDelay);
-    GenLEDDigitalOutput(nLEDPin[RedPin], LOW, nDelay);
+    GenLEDDigitalOutput (*(pLED+RedPin), HIGH, nDelay);
+    GenLEDDigitalOutput (*(pLED+RedPin), LOW, nDelay);
     
-    GenLEDDigitalOutput(nLEDPin[YellowPin], HIGH, nDelay);
-    GenLEDDigitalOutput(nLEDPin[YellowPin], LOW, nDelay);
+    GenLEDDigitalOutput (*(nLEDPin+YellowPin), HIGH, nDelay);
+    GenLEDDigitalOutput (*(nLEDPin+YellowPin), LOW, nDelay);
     
-    GenLEDDigitalOutput(nLEDPin[GreenPin], HIGH, nDelay);
-    GenLEDDigitalOutput(nLEDPin[GreenPin], LOW, nDelay);
+    GenLEDDigitalOutput (*(nLEDPin+GreenPin), HIGH, nDelay);
+    GenLEDDigitalOutput (*(nLEDPin+GreenPin), LOW, nDelay);
     
-    GenLEDDigitalOutput(nLEDPin[BluePin], HIGH, nDelay);
-    GenLEDDigitalOutput(nLEDPin[BluePin], LOW, nDelay);
+    GenLEDDigitalOutput (*(nLEDPin+BluePin), HIGH, nDelay);
+    GenLEDDigitalOutput (*(nLEDPin+BluePin), LOW, nDelay);
   }
     
     //파랑,초록,노랑,빨강 순서대로 깜박임
@@ -85,25 +86,25 @@ void loop()
         }
     }
   
-    GenLEDDigitalOutput(nLEDPin[BluePin], HIGH, nDelay);
-    GenLEDDigitalOutput(nLEDPin[BluePin], LOW, nDelay);
+    GenLEDDigitalOutput (*(nLEDPin+BluePin), HIGH, nDelay);
+    GenLEDDigitalOutput (*(nLEDPin+BluePin), LOW, nDelay);
     
-    GenLEDDigitalOutput(nLEDPin[GreenPin], HIGH, nDelay);
-    GenLEDDigitalOutput(nLEDPin[GreenPin], LOW, nDelay);
+    GenLEDDigitalOutput (*(nLEDPin+GreenPin), HIGH, nDelay);
+    GenLEDDigitalOutput (*(nLEDPin+GreenPin), LOW, nDelay);
     
-    GenLEDDigitalOutput(nLEDPin[YellowPin], HIGH, nDelay);
-    GenLEDDigitalOutput(nLEDPin[YellowPin], LOW, nDelay);
+    GenLEDDigitalOutput (*(nLEDPin+YellowPin), HIGH, nDelay);
+    GenLEDDigitalOutput (*(nLEDPin+YellowPin), LOW, nDelay);
     
-    GenLEDDigitalOutput(nLEDPin[RedPin], HIGH, nDelay);
-    GenLEDDigitalOutput(nLEDPin[RedPin], LOW, nDelay);
+    GenLEDDigitalOutput (*(pLED+RedPin), HIGH, nDelay);
+    GenLEDDigitalOutput (*(pLED+RedPin), LOW, nDelay);
   }
   
   else //예외처리구문(가변저항값이 0일경우)
   {
-    GenLEDDigitalOutput(nRedPin, LOW, 0);
-    GenLEDDigitalOutput(nYellowPin, LOW, 0);
-    GenLEDDigitalOutput(nGreenPin, LOW, 0);
-    GenLEDDigitalOutput(nBluePin, LOW, 0);
+    GenLEDDigitalOutput (*(pLED+RedPin), LOW, 0);
+    GenLEDDigitalOutput (*(nLEDPin+YellowPin), LOW, 0);
+    GenLEDDigitalOutput (*(nLEDPin+GreenPin), LOW, 0);
+    GenLEDDigitalOutput (*(nLEDPin+BluePin), LOW, 0);
     
     myServo.write(0);
   }
